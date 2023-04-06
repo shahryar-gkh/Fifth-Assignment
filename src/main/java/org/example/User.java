@@ -3,9 +3,8 @@ package org.example;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class User {
-    private String username;
-    private String password;
+public class User extends Account {
+    Account userAccount = new Account();
     private String email;
     private String phoneNumber;
     private String address;
@@ -15,14 +14,20 @@ public class User {
     private ArrayList<ArrayList<Product>> allOrders;
     private HashMap<String, String> comment;
 
+    public User(Account userAccount) {
+        this.userAccount = userAccount;
+    }
+
+    public User(String username, String password, String email, String phoneNumber, String address, float wallet) {
+        super(username, password);
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.wallet = wallet;
+    }
+
     //Setters
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
     public void setEmail(String email) {
         this.email = email;
     }
@@ -38,13 +43,6 @@ public class User {
 
     //Getters
 
-
-    public String getUsername() {
-        return username;
-    }
-    public String getPassword() {
-        return password;
-    }
     public String getEmail() {
         return email;
     }
@@ -60,8 +58,8 @@ public class User {
 
     @Override
     public String toString() {
-        return  "\nUsername = " + username +
-                "\nPassword = " + password +
+        return  "\nUsername = " + userAccount.username +
+                "\nPassword = " + userAccount.password +
                 "\nEmail = " + email +
                 "\nPhone number = " + phoneNumber +
                 "\nAddress = " + address +

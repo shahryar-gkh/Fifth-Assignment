@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Product {
+    public Product(String name, int quantity, float price) {
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
     private String name;
     private int quantity;
     private float price;

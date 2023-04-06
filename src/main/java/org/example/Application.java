@@ -3,19 +3,19 @@ package org.example;
 import java.util.ArrayList;
 
 public class Application {
-    private User currentUser = new User();
-    private ArrayList<User> users = new ArrayList<>();
+    private Account currentAccount = new Account();
+    private ArrayList<Account> accounts = new ArrayList<>();
     private ArrayList<Product> products = new ArrayList<>();
+    private ArrayList<ArrayList<Product>> orders = new ArrayList();
 
-    public User getCurrentUser() {
-        return currentUser;
+    public Account getCurrentAccount() {
+        return currentAccount;
     }
 
-    public void setCurrentUser(String username, String password) {
-        currentUser.setUsername(username);
-        currentUser.setPassword(password);
-    }
 
+    public void addToRequests() {
+
+    }
     public void printListOfProductsInArraylist(ArrayList<Product> listOfProducts) {
         for (Product product : listOfProducts) {
             System.out.println(product);
@@ -31,28 +31,40 @@ public class Application {
         return false;
     }
 
-    public void createAccount(String username, String password) {
-        User newUser = new User();
-        newUser.setUsername(username);
-        newUser.setPassword(password);
-        users.add(newUser);
+    public void createAccount(Account newAccount) {
+        accounts.add(newAccount);
+        currentAccount = newAccount;
     }
 
     public boolean usernameTaken(String username){
-        for (User user : users) {
-            if (user.getUsername().equals(username)) {
+        for (Account account : accounts) {
+            if (account.getClass().equals(User.class) && account.getUsername().equals(username)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean adminUsernameTaken(String username){
+        for (Account account : accounts) {
+            if (account.getClass().equals(Admin.class) && account.getUsername().equals(username)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean sellerUsernameTaken(String username) {
+        for (Account account : accounts) {
+            if (account.getClass().equals(Seller.class) && account.getUsername().equals(username)) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean login(String username, String password) {
-        for (User user : users) {
-            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                currentUser = user;
-                currentUser.setUsername(username);
-                currentUser.setPassword(password);
+    public boolean isPasswordValid(String username, String password) {
+        for (Account account : accounts) {
+            if (account.getUsername().equals(username) && account.getPassword().equals(password)) {
+                currentAccount = account;
                 return true;
             }
         }
@@ -60,22 +72,22 @@ public class Application {
     }
 
     public void changePassword(String username, String newPassword) {
-        for (User user : users) {
-            if (user.getUsername().equals(username)) {
-                user.setPassword(newPassword);
-                currentUser = user;
+        for (Account account : accounts) {
+            if (account.getUsername().equals(username)) {
+                account.setPassword(newPassword);
+                currentAccount = account;
             }
         }
     }
 
     public void logout() {
-        currentUser = null;
+        currentAccount = null;
     }
 
     public void deleteAccount(String username) {
-        for (User user : users) {
-            if (username.equals(user.getUsername())) {
-                users.remove(user);
+        for (Account account : accounts) {
+            if (username.equals(account.getUsername())) {
+                accounts.remove(account);
             }
         }
     }
