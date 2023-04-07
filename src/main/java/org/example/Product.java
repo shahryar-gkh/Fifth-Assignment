@@ -4,16 +4,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Product {
+    public Product() {
+
+    }
     public Product(String name, int quantity, float price) {
         this.name = name;
         this.quantity = quantity;
         this.price = price;
     }
 
-    private String name;
-    private int quantity;
-    private float price;
-    private ArrayList<HashMap<String, String>> comments;
+    protected String name;
+    protected int quantity;
+    protected float price;
+    protected ArrayList<HashMap<String, String>> comments;
 
     //Setters
 
