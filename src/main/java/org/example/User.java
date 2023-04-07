@@ -9,10 +9,10 @@ public class User extends Account {
     private String phoneNumber;
     private String address;
     private float wallet;
-    private ArrayList<Product> shoppingCart;
-    private ArrayList<Product> purchasedProducts;
-    private ArrayList<ArrayList<Product>> allOrders;
-    private HashMap<String, String> comment;
+    private ArrayList<Product> shoppingCart = new ArrayList<>();
+    private ArrayList<Product> purchasedProducts = new ArrayList<>();
+    private ArrayList<ArrayList<Product>> allOrders = new ArrayList<>();
+    private HashMap<String, String> comment = new HashMap<>();
 
     public User(Account userAccount) {
         this.userAccount = userAccount;
@@ -54,6 +54,15 @@ public class User extends Account {
     }
     public float getWallet() {
         return wallet;
+    }
+    public ArrayList<Product> getShoppingCart() {
+        return shoppingCart;
+    }
+    public ArrayList<Product> getPurchasedProducts() {
+        return purchasedProducts;
+    }
+    public ArrayList<ArrayList<Product>> getAllOrders() {
+        return allOrders;
     }
 
     @Override

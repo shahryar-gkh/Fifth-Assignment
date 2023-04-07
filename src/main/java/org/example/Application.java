@@ -7,14 +7,15 @@ public class Application {
     private ArrayList<Account> accounts = new ArrayList<>();
     private ArrayList<Product> products = new ArrayList<>();
     private ArrayList<ArrayList<Product>> orders = new ArrayList();
+    private ArrayList<SellerRequest> sellerRequests = new ArrayList<>();
 
     public Account getCurrentAccount() {
         return currentAccount;
     }
 
 
-    public void addToRequests() {
-
+    public void addToRequests(SellerRequest request) {
+        sellerRequests.add(request);
     }
     public void printListOfProductsInArraylist(ArrayList<Product> listOfProducts) {
         for (Product product : listOfProducts) {
@@ -75,6 +76,36 @@ public class Application {
         for (Account account : accounts) {
             if (account.getUsername().equals(username)) {
                 account.setPassword(newPassword);
+                currentAccount = account;
+            }
+        }
+    }
+
+    public void changeEmail(String username, String newEmail) {
+        for (Account account : accounts) {
+            if (account.getUsername().equals(username)) {
+                User user = (User) account;
+                user.setEmail(newEmail);
+                currentAccount = user;
+            }
+        }
+    }
+
+    public void changeNumber(String username, String newNumber) {
+        for (Account account : accounts) {
+            if (account.getUsername().equals(username)) {
+                User user = (User) account;
+                user.setPhoneNumber(newNumber);
+                currentAccount = account;
+            }
+        }
+    }
+
+    public void changeAddress(String username, String newAddress) {
+        for (Account account : accounts) {
+            if (account.getUsername().equals(username)) {
+                User user = (User) account;
+                user.setAddress(newAddress);
                 currentAccount = account;
             }
         }
