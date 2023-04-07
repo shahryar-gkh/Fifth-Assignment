@@ -123,7 +123,7 @@ public class Application {
         }
     }
 
-    public ArrayList<Product> searchByTitle(String name) {
+    public ArrayList<Product> searchInAllProducts(String name) {
         ArrayList<Product> searchResult = new ArrayList<>();
         for (Product product : products) {
             if (product.getName().toLowerCase().contains(name.toLowerCase())) {

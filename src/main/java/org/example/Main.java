@@ -170,7 +170,7 @@ public class Main {
             choice = input.nextLine();
             switch (choice) {
                 case "1":
-                    //search();
+                    search();
                     break;
                 case "2":
                     //categories();
@@ -182,6 +182,41 @@ public class Main {
         }
         while (choice.equals("1") || choice.equals("2") || choice.equals("3"));
         application.logout();
+    }
+
+    public static void search() {
+        Scanner input = new Scanner(System.in);
+        User currentUser = (User) application.getCurrentAccount();
+        System.out.println("\nEnter the name of the product you're looking for\nEnter 0 if you want to return to the menu:");
+        String name;
+        while (true) {
+            name = input.nextLine();
+            if (name.equalsIgnoreCase("0")) {
+                return;
+            } else if (application.searchInAllProducts(name).size() == 0) {
+                System.out.println("\nThis product doesn't exist. Make sure you're typing in at least a part of the product's name.\nEnter 0 if you want to return to the menu:");
+            } else {
+                break;
+            }
+        }
+        application.printListOfProductsInArraylist(application.searchInAllProducts(name));
+        if (application.searchInAllProducts(name).size() > 1) {
+            do {
+                System.out.println("\nPlease be more specific with the product's name. Enter the full name (Or enter 0 if you want to go back to the menu):");
+                name = input.nextLine();
+                if (name.equalsIgnoreCase("e")) {
+                    return;
+                }
+            }
+            while (application.searchInAllProducts(name).size() > 1 || !application.doesProductExistWithExactName(name));
+            application.printListOfProductsInArraylist(application.searchInAllProducts(name));
+        }
+        System.out.println("\nWould you like to add this item to your shopping cart?\n1. Yes\n2. No");
+        int addOrNot = Integer.parseInt(input.nextLine());
+        if (addOrNot == 1) {
+            Product currentProduct = application.searchInAllProducts(name).get(0);
+            currentUser.addToShoppingCart(currentProduct);
+        }
     }
 
     public static void viewProfile() {
