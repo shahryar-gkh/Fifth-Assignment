@@ -1,10 +1,28 @@
 package org.example;
 
 public class Laptop extends Product {
+    public Laptop(String name, String category, String companyName, String color, double sizeInInches, int weightInGrams, int storageInGigabytes,
+                int ram, String cpu, String gpu, int gpuSize, int battery, float price, int quantity) {
+        this.name = name;
+        this.category = category;
+        this.companyName = companyName;
+        this.color = color;
+        this.sizeInInches = sizeInInches;
+        this.weightInGrams = weightInGrams;
+        this.storageInGigabytes = storageInGigabytes;
+        this.ram = ram;
+        this.cpu = cpu;
+        this.gpu = gpu;
+        this.gpuSize = gpuSize;
+        this.battery = battery;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
     private String category;
     private String companyName;
     private String color;
-    private int sizeInInches;
+    private double sizeInInches;
     private int weightInGrams;
     private int storageInGigabytes;
     private int ram;
@@ -24,7 +42,7 @@ public class Laptop extends Product {
     public void setColor(String color) {
         this.color = color;
     }
-    public void setSizeInInches(int sizeInInches) {
+    public void setSizeInInches(double sizeInInches) {
         this.sizeInInches = sizeInInches;
     }
     public void setWeightInGrams(int weightInGrams) {
@@ -61,7 +79,7 @@ public class Laptop extends Product {
     public String getColor() {
         return color;
     }
-    public int getSizeInInches() {
+    public double getSizeInInches() {
         return sizeInInches;
     }
     public int getWeightInGrams() {
@@ -100,6 +118,5 @@ public class Laptop extends Product {
                 "\nGPU: " + gpu +
                 "\nGPU size: " + gpuSize +
                 "\nBattery: " + battery;
-
     }
 }

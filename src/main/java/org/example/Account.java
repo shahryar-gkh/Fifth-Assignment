@@ -28,4 +28,10 @@ public class Account {
     public String getPassword() {
         return password;
     }
+
+    @Override
+    public String toString() {
+        return "\nUsername: " + username + '\n' +
+                "\nPassword: " + password;
+    }
 }

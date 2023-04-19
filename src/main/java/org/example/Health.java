@@ -1,6 +1,15 @@
 package org.example;
 
 public class Health extends Product {
+    public Health(String name, String category, String brand, boolean natural, float price, int quantity) {
+        this.name = name;
+        this.category = category;
+        this.brand = brand;
+        this.natural = natural;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
     private String category;
     private String brand;
     private boolean natural;

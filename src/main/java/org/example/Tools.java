@@ -1,6 +1,14 @@
 package org.example;
 
 public class Tools extends Product {
+    public Tools(String name, String category, String color, String material, float price, int quantity) {
+        this.name = name;
+        this.category = category;
+        this.color = color;
+        this.material = material;
+        this.price = price;
+        this.quantity = quantity;
+    }
     private String category;
     private String color;
     private String material;

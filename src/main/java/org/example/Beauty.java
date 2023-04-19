@@ -1,6 +1,15 @@
 package org.example;
 
 public class Beauty extends Product {
+    public Beauty(String name, String category, String brand, int spf, float price, int quantity) {
+        this.name = name;
+        this.category = category;
+        this.brand = brand;
+        this.spf = spf;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
     private String category;
     private String brand;
     private int spf;

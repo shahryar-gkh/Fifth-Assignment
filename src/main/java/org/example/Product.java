@@ -16,7 +16,7 @@ public class Product {
     protected String name;
     protected int quantity;
     protected float price;
-    protected ArrayList<HashMap<String, String>> comments;
+    protected ArrayList<HashMap<String, String>> comments = new ArrayList<>();
 
     //Setters
 
@@ -44,9 +44,16 @@ public class Product {
 
     @Override
     public String toString() {
-        return  "\nName = " + name +
-                "\nQuantity = " + quantity +
-                "\nPrice = " + price +
-                "\nComments = " + comments;
+        if (comments.isEmpty()) {
+            return "\nName: " + name +
+                    "\nQuantity: " + quantity +
+                    "\nPrice: " + price;
+        }
+        else {
+            return "\nName: " + name +
+                    "\nQuantity: " + quantity +
+                    "\nPrice: " + price +
+                    "\nComments: " + comments;
+        }
     }
 }

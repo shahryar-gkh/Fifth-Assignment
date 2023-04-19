@@ -15,4 +15,10 @@ public class Admin extends Account {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "\nEmail: " + email;
+    }
 }

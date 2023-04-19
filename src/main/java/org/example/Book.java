@@ -1,16 +1,21 @@
 package org.example;
 
 public class Book extends Product {
-    private String category;
+    public Book(String name, String publisher, String author, String genre, float price, int quantity) {
+        this.name = name;
+        this.publisher = publisher;
+        this.author = author;
+        this.genre = genre;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
     private String publisher;
     private String author;
     private String genre;
 
     //Setters
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
@@ -23,9 +28,6 @@ public class Book extends Product {
 
     //Getters
 
-    public String getCategory() {
-        return category;
-    }
     public String getPublisher() {
         return publisher;
     }
@@ -38,8 +40,7 @@ public class Book extends Product {
 
     @Override
     public String toString() {
-        return '\n' + category +
-                super.toString() +
+        return  super.toString() +
                 "\nAuthor: " + author +
                 "\nPublisher: " + publisher +
                 "\nGenre: " + genre;

@@ -1,22 +1,55 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Application {
     private Account currentAccount = new Account();
     private ArrayList<Account> accounts = new ArrayList<>();
     private ArrayList<Product> products = new ArrayList<>();
-    private ArrayList<ArrayList<Product>> orders = new ArrayList();
+    private ArrayList<ArrayList<Product>> orders = new ArrayList<>();
     private ArrayList<SellerRequest> sellerRequests = new ArrayList<>();
 
     public Account getCurrentAccount() {
         return currentAccount;
     }
 
-
     public void addToRequests(SellerRequest request) {
         sellerRequests.add(request);
     }
+
+    public boolean viewSellerRequest() {
+        if (sellerRequests.size() == 0) {
+            return false;
+        }
+        else {
+            SellerRequest newRequest = sellerRequests.get(0);
+            System.out.println('\n' + newRequest.getSellerUsername());
+            for (Product product : newRequest.getSellerProducts()) {
+                System.out.println("\nProduct name: " + product.getName() + "\nQuantity: " + product.getQuantity() + "\nPrice: " + product.getPrice());
+            }
+            Seller potentialSeller = new Seller();
+            for (Account account : accounts) {
+                if (account.getUsername().equals(newRequest.getSellerUsername()) && account.getPassword().equals(newRequest.getSellerPassword())) {
+                    potentialSeller = (Seller) account;
+                }
+            }
+            System.out.println("\nDo you authorize this seller to work with \"RETAIL THERAPY\"?\n1. Yes\n2. No");
+            Scanner input = new Scanner(System.in);
+            String authorization = input.nextLine();
+            if (authorization.equals("1")) {
+                potentialSeller.setRequestResult(1);
+                sellerRequests.remove(0);
+            }
+            else if (authorization.equals("2")) {
+                potentialSeller.setRequestResult(2);
+                sellerRequests.remove(0);
+                accounts.remove(potentialSeller);
+            }
+            return true;
+        }
+    }
+
     public void printListOfProductsInArraylist(ArrayList<Product> listOfProducts) {
         for (Product product : listOfProducts) {
             System.out.println(product);
@@ -45,6 +78,7 @@ public class Application {
         }
         return false;
     }
+
     public boolean adminUsernameTaken(String username){
         for (Account account : accounts) {
             if (account.getClass().equals(Admin.class) && account.getUsername().equals(username)) {
@@ -53,6 +87,7 @@ public class Application {
         }
         return false;
     }
+
     public boolean sellerUsernameTaken(String username) {
         for (Account account : accounts) {
             if (account.getClass().equals(Seller.class) && account.getUsername().equals(username)) {
@@ -60,6 +95,17 @@ public class Application {
             }
         }
         return false;
+    }
+
+    public Seller findSeller(String username, String password) {
+        Seller seller = new Seller();
+        for (Account account : accounts) {
+            if (account.getUsername().equals(username) && account.getPassword().equals(password)) {
+                seller = (Seller) account;
+                break;
+            }
+        }
+        return seller;
     }
 
     public boolean isPasswordValid(String username, String password) {
@@ -77,6 +123,7 @@ public class Application {
             if (account.getUsername().equals(username)) {
                 account.setPassword(newPassword);
                 currentAccount = account;
+                break;
             }
         }
     }
@@ -87,6 +134,7 @@ public class Application {
                 User user = (User) account;
                 user.setEmail(newEmail);
                 currentAccount = user;
+                break;
             }
         }
     }
@@ -97,6 +145,7 @@ public class Application {
                 User user = (User) account;
                 user.setPhoneNumber(newNumber);
                 currentAccount = account;
+                break;
             }
         }
     }
@@ -107,20 +156,13 @@ public class Application {
                 User user = (User) account;
                 user.setAddress(newAddress);
                 currentAccount = account;
+                break;
             }
         }
     }
 
     public void logout() {
         currentAccount = null;
-    }
-
-    public void deleteAccount(String username) {
-        for (Account account : accounts) {
-            if (username.equals(account.getUsername())) {
-                accounts.remove(account);
-            }
-        }
     }
 
     public ArrayList<Product> searchInAllProducts(String name) {
@@ -131,5 +173,16 @@ public class Application {
             }
         }
         return searchResult;
+    }
+
+    public void addProduct(Product product, String username) {
+        products.add(product);
+        for (Account account : accounts) {
+            if (account.getUsername().equals(username)) {
+                Seller seller = (Seller) account;
+                seller.addToAvailableProducts(product);
+                break;
+            }
+        }
     }
 }

@@ -67,15 +67,15 @@ public class User extends Account {
 
     @Override
     public String toString() {
-        return  "\nUsername = " + userAccount.username +
-                "\nPassword = " + userAccount.password +
-                "\nEmail = " + email +
-                "\nPhone number = " + phoneNumber +
-                "\nAddress = " + address +
-                "\nWallet = " + wallet +
-                "\nShopping cart = " + shoppingCart +
-                "\nPurchased products = " + purchasedProducts +
-                "\nAll orders = " + allOrders;
+        return  "\nUsername: " + userAccount.username +
+                "\nPassword: " + userAccount.password +
+                "\nEmail: " + email +
+                "\nPhone number: " + phoneNumber +
+                "\nAddress: " + address +
+                "\nWallet: " + wallet +
+                "\nShopping cart: " + shoppingCart +
+                "\nPurchased products: " + purchasedProducts +
+                "\nAll orders: " + allOrders;
     }
 
     //Other methods
@@ -88,6 +88,9 @@ public class User extends Account {
     }
     public void purchase() {
         purchasedProducts.addAll(shoppingCart);
+    }
+    public void clearShoppingCart() {
+        shoppingCart.clear();
     }
 
 }

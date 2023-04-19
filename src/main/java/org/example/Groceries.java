@@ -1,15 +1,22 @@
 package org.example;
 
 public class Groceries extends Product {
+    public Groceries(String name, String category, int netWeight, float price, int quantity) {
+        this.name = name;
+        this.category = category;
+        this.netWeight = netWeight;
+        this.price = price;
+        this.quantity = quantity;
+    }
     private String category;
-    private String netWeight;
+    private int netWeight;
 
     //Setters
 
     public void setCategory(String category) {
         this.category = category;
     }
-    public void setNetWeight(String netWeight) {
+    public void setNetWeight(int netWeight) {
         this.netWeight = netWeight;
     }
 
@@ -18,7 +25,7 @@ public class Groceries extends Product {
     public String getCategory() {
         return category;
     }
-    public String getNetWeight() {
+    public int getNetWeight() {
         return netWeight;
     }
 

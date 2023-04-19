@@ -1,6 +1,15 @@
 package org.example;
 
-public class Stationary extends Product {
+public class Stationery extends Product {
+    public Stationery(String name, String category, String brand, String color, float price, int quantity) {
+        this.name = name;
+        this.category = category;
+        this.brand = brand;
+        this.color = color;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
     private String category;
     private String brand;
     private String color;

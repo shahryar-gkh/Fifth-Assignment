@@ -1,10 +1,28 @@
 package org.example;
 
 public class Phone extends Product {
+    public Phone(String name, String category, String companyName, String color, double sizeInInches, int weightInGrams, int storageInGigabytes,
+                 int ram, String processor, int mainCamera, int selfieCamera, int batteryCapacity, float price, int quantity) {
+        this.name = name;
+        this.category = category;
+        this.companyName = companyName;
+        this.color = color;
+        this.sizeInInches = sizeInInches;
+        this.weightInGrams = weightInGrams;
+        this.storageInGigabytes = storageInGigabytes;
+        this.ram = ram;
+        this.processor = processor;
+        this.mainCamera = mainCamera;
+        this.selfieCamera = selfieCamera;
+        this.batteryCapacity = batteryCapacity;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
     private String category;
     private String companyName;
     private String color;
-    private int sizeInInches;
+    private double sizeInInches;
     private int weightInGrams;
     private int storageInGigabytes;
     private int ram;
@@ -24,7 +42,7 @@ public class Phone extends Product {
     public void setColor(String color) {
         this.color = color;
     }
-    public void setSizeInInches(int sizeInInches) {
+    public void setSizeInInches(double sizeInInches) {
         this.sizeInInches = sizeInInches;
     }
     public void setWeightInGrams(int weightInGrams) {
@@ -60,7 +78,7 @@ public class Phone extends Product {
     public String getColor() {
         return color;
     }
-    public int getSizeInInches() {
+    public double getSizeInInches() {
         return sizeInInches;
     }
     public int getWeightInGrams() {

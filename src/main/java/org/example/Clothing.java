@@ -1,6 +1,18 @@
 package org.example;
 
 public class Clothing extends Product {
+
+    public Clothing(String name, String category, String brand, String size, String color, String gender, float price, int quantity) {
+        this.name = name;
+        this.category = category;
+        this.brand = brand;
+        this.size = size;
+        this.color = color;
+        this.gender = gender;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
     private String category;
     private String brand;
     private String size;
