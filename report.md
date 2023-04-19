@@ -1,0 +1,13 @@
+# Fifth Assignment Report
+* Mohammad Golkhorshidi
+* 401222117
+## Introduction
+* This assignment was about creating a program that works like online shops such as Digikala and Amazon. The purpose is working with OOP on a larger scale and handling multiple classes with inheritance simultaneously.
+* Since the assignment contained a variety of data types, it was very important to handle them correctly and add, change, and remove them when necessary. It was also needed to handle the menu in a way that it's user-friendly.
+## Design Implementation
+* Inheritance was a crucial part of this assignment. There were near 20 classes involved and some of them needed to be extended from others. An example is the 10 categories for products that extended the product class; they all had some attributes in common such as product name, price, quantity, etc. Data was mostly stored in arraylists because they're easy and efficient to work with.
+* I faced some challenges in the code. The main reason was the size of the project. It was the heaviest program I'd ever worked on, so it made sense that I faced multiple challenges while I was writing the code. The majority of the challenges were small things related to data types. I kept getting a null pointer error because in some parts of my code, I was initializing arraylists with the format "ArrayList<> name;" instead of "ArrayList<> name = new Arraylist<>;". By fixing that, the error was gone. Another main challenge was handling the accounts. All three account types user, seller and admin, inherited the class "Account". The arraylist that kept the accounts contained the three account types, so that made it a bit more complicated to access the data inside it. But at the same time, it reduced the complexity of the code in some ways.
+## Testing and Evaluation
+* The testing process was an essential part of this assignment; because of how relatively complicated it was and how many different parts had to be tested. It did help me a lot to fix some small errors and bugs. For example, assigning a double value to an integer gave me an error and thanks to OOP, it was very easy to know where to go and how to fix it.
+## Conclusion
+* The key findings of this assignment was paying closer attention to data types and how they match. It wasn't extremely hard, it was only heavy and had so many details. It was a great practice to gain fluency in OOP and make better and more interactive menus.
