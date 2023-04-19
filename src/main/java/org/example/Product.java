@@ -4,10 +4,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Product {
-    private String name;
-    private int quantity;
-    private float price;
-    private ArrayList<HashMap<String, String>> comments;
+    public Product() {
+
+    }
+    public Product(String name, int quantity, float price) {
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
+    protected String name;
+    protected int quantity;
+    protected float price;
+    protected ArrayList<HashMap<String, String>> comments = new ArrayList<>();
 
     //Setters
 
@@ -35,9 +44,16 @@ public class Product {
 
     @Override
     public String toString() {
-        return  "\nName = " + name +
-                "\nQuantity = " + quantity +
-                "\nPrice = " + price +
-                "\nComments = " + comments;
+        if (comments.isEmpty()) {
+            return "\nName: " + name +
+                    "\nQuantity: " + quantity +
+                    "\nPrice: " + price;
+        }
+        else {
+            return "\nName: " + name +
+                    "\nQuantity: " + quantity +
+                    "\nPrice: " + price +
+                    "\nComments: " + comments;
+        }
     }
 }
